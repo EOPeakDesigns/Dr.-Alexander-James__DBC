@@ -48,7 +48,15 @@ const elements = {
 
 init().catch(console.error);
 
+function stabilizeViewport() {
+    const root = document.documentElement;
+    root.scrollLeft = 0;
+    root.scrollTop = 0;
+    window.scrollTo(0, 0);
+}
+
 async function init() {
+    stabilizeViewport();
     state.card = await loadCardData();
     state.lang = localStorage.getItem(LANG_KEY) || state.card.defaultLanguage || "en";
     state.theme = localStorage.getItem(THEME_KEY) || "system";
@@ -58,6 +66,13 @@ async function init() {
     applyTheme();
     watchSystemThemeChanges();
     registerServiceWorker();
+    stabilizeViewport();
+    window.addEventListener("orientationchange", () => {
+        window.setTimeout(stabilizeViewport, 150);
+    });
+    window.addEventListener("pageshow", (event) => {
+        if (event.persisted) stabilizeViewport();
+    });
 }
 
 function getEffectiveTheme() {
@@ -393,6 +408,7 @@ function toggleLanguage() {
 function applyDocumentLocale() {
     elements.html.lang = state.lang;
     elements.html.dir = state.lang === "ar" ? "rtl" : "ltr";
+    requestAnimationFrame(stabilizeViewport);
 }
 
 function labels() {

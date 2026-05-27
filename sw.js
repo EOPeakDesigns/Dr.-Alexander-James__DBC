@@ -1,4 +1,4 @@
-const CACHE_NAME = "digital-card-v7";
+const CACHE_NAME = "digital-card-v8";
 const SHELL_ASSETS = [
     "./",
     "./index.html",
