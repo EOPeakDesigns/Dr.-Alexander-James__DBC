@@ -1,0 +1,115 @@
+{
+  "defaultLanguage": "en",
+  "shareFallbackUrl": "",
+  "profile": {
+    "name": "Dr. Alexander James",
+    "organization": "AJ Growth Partners",
+    "i18n": {
+      "en": {
+        "name": "Dr. Alexander James",
+        "eyebrow": "Business Growth Strategy",
+        "title": "Business Development Consultant",
+        "bio": "Transforming companies through practical growth strategy, expansion planning, and measurable commercial outcomes."
+      },
+      "ar": {
+        "name": "د. ألكسندر جيمس",
+        "eyebrow": "استشارات تطوير الأعمال",
+        "title": "مستشار تطوير أعمال",
+        "bio": "أساعد الشركات على تحقيق نمو عملي عبر استراتيجيات توسع واضحة ونتائج تجارية قابلة للقياس."
+      }
+    }
+  },
+  "contact": {
+    "phone": "+1234567890",
+    "email": "consultant@businessdev.com",
+    "website": "https://businessdev.com",
+    "address": "Downtown Business District, Dubai",
+    "addressAr": "حي الأعمال في وسط مدينة دبي",
+    "mapsUrl": "https://maps.google.com/?q=Downtown+Business+District+Dubai",
+    "whatsapp": "+1234567890"
+  },
+  "socials": [
+    { "name": "Instagram", "url": "https://instagram.com/businessdevconsultant" },
+    { "name": "Facebook", "url": "https://facebook.com/businessdevconsultant" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/businessdevconsultant" },
+    { "name": "X", "url": "https://x.com/businessdevconsultant" }
+  ],
+  "assets": {
+    "avatar": "assets/owner.png",
+    "avatarTypo": "assets/onwer.png",
+    "qr": "assets/MYQR.png",
+    "coverIcon": "assets/Inversment_icon.png"
+  },
+  "featureVideo": {
+    "type": "embed",
+    "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "labels": {
+    "en": {
+      "avatarHint": "Tap avatar to watch a short showcase",
+      "call": "Call",
+      "email": "Email",
+      "website": "Website",
+      "address": "Address",
+      "whatsapp": "WhatsApp",
+      "copy": "Copy",
+      "copied": "Copied to clipboard",
+      "copyFallback": "Unable to copy automatically",
+      "saveContact": "Save Contact",
+      "shareCard": "Share Card",
+      "openQr": "Open QR",
+      "downloadQr": "Download QR",
+      "downloadStarted": "QR download started",
+      "vcardStarted": "Contact file download started",
+      "shareText": "Here is my digital business card",
+      "shareCopied": "Card link copied",
+      "qrEyebrow": "Quick Connect",
+      "qrTitle": "Scan to Save Contact",
+      "qrDescription": "Scan this QR code to open my digital card instantly.",
+      "videoEyebrow": "Strategic Impact",
+      "videoTitle": "Growth Strategy in Motion",
+      "videoCaption": "A concise showcase of market planning, execution quality, and measurable business outcomes.",
+      "installMessage": "Install this card for one-tap access offline.",
+      "installNow": "Install",
+      "dismiss": "Dismiss",
+      "languageToggle": "Switch language",
+      "themeSystem": "Auto",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeToggle": "Theme"
+    },
+    "ar": {
+      "avatarHint": "اضغط على الصورة لمشاهدة عرض سريع",
+      "call": "اتصال",
+      "email": "بريد",
+      "website": "الموقع",
+      "address": "العنوان",
+      "whatsapp": "واتساب",
+      "copy": "نسخ",
+      "copied": "تم النسخ",
+      "copyFallback": "تعذر النسخ تلقائيًا",
+      "saveContact": "حفظ جهة الاتصال",
+      "shareCard": "مشاركة البطاقة",
+      "openQr": "عرض QR",
+      "downloadQr": "تنزيل QR",
+      "downloadStarted": "بدأ تنزيل رمز QR",
+      "vcardStarted": "بدأ تنزيل ملف جهة الاتصال",
+      "shareText": "هذه بطاقتي الرقمية",
+      "shareCopied": "تم نسخ رابط البطاقة",
+      "qrEyebrow": "وصول سريع",
+      "qrTitle": "امسح لحفظ جهة الاتصال",
+      "qrDescription": "امسح هذا الرمز لفتح بطاقتي الرقمية مباشرة.",
+      "videoEyebrow": "أثر استراتيجي",
+      "videoTitle": "الاستراتيجية والنمو في الواقع",
+      "videoCaption": "عرض مختصر يوضح التخطيط السوقي وجودة التنفيذ والنتائج التجارية القابلة للقياس.",
+      "installMessage": "ثبّت البطاقة للوصول السريع حتى بدون اتصال.",
+      "installNow": "تثبيت",
+      "dismiss": "إغلاق",
+      "languageToggle": "تبديل اللغة",
+      "themeSystem": "تلقائي",
+      "themeLight": "فاتح",
+      "themeDark": "داكن",
+      "themeToggle": "المظهر"
+    }
+  }
+}

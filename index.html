@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Digital Business Card</title>
+    <meta name="description" content="Premium mobile-first digital business card.">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Digital Business Card">
+    <meta property="og:description" content="Premium mobile-first digital business card.">
+    <meta property="og:url" content="./">
+    <meta property="og:image" content="assets/apple-touch-icon.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Digital Business Card">
+    <meta property="twitter:description" content="Premium mobile-first digital business card.">
+    <meta property="twitter:image" content="assets/apple-touch-icon.png">
+    <link rel="canonical" href="./">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Dr. James">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="assets/Inversment_icon.png" as="image">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+    <div class="toast" id="appToast" role="status" aria-live="polite"></div>
+    <main id="mainContent" class="container">
+        <article class="business-card">
+            <header class="header-section">
+                <img src="assets/Inversment_icon.png" alt="" class="investment-icon" loading="eager">
+            </header>
+            <section class="profile-section">
+                <button id="openVideoBtn" class="avatar-button" aria-haspopup="dialog">
+                    <img id="profileImage" class="profile-image" src="" alt="" width="120" height="120" loading="eager">
+                    <span class="play-badge" aria-hidden="true">▶</span>
+                </button>
+                <p class="avatar-hint" id="avatarHint"></p>
+                <p class="eyebrow" id="eyebrowText"></p>
+                <h1 class="owner-name" id="ownerName"></h1>
+                <p class="role-title" id="ownerTitle"></p>
+                <p class="bio-text" id="ownerBio"></p>
+            </section>
+            <section class="utility-section">
+                <button class="utility-button icon-only" id="saveContactBtn" aria-label="Save contact"></button>
+                <button class="utility-button icon-only" id="shareCardBtn" aria-label="Share card"></button>
+                <button class="utility-button icon-only" id="openQRBtn" aria-label="Open QR"></button>
+                <button class="utility-button icon-only" id="themeToggle" aria-label="Toggle theme"></button>
+                <button class="utility-button icon-only" id="langToggle" aria-label="Toggle language"></button>
+            </section>
+            <section class="contact-section" id="contactList"></section>
+            <section class="social-section" id="socialList"></section>
+        </article>
+    </main>
+
+    <aside class="install-banner hidden" id="installBanner">
+        <p id="installMessage"></p>
+        <div class="install-actions">
+            <button id="installNowBtn"></button>
+            <button id="dismissInstallBtn"></button>
+        </div>
+    </aside>
+
+    <div class="modal-overlay" id="qrModal" aria-hidden="true">
+        <section class="modal-content" role="dialog" aria-modal="true" aria-labelledby="qrTitle" aria-describedby="qrDesc">
+            <div class="modal-header">
+                <div>
+                    <p class="modal-eyebrow" id="qrEyebrow"></p>
+                    <h2 id="qrTitle"></h2>
+                </div>
+                <button class="icon-btn close-btn" data-close-modal="qrModal" aria-label="Close">✕</button>
+            </div>
+            <p id="qrDesc"></p>
+            <img id="qrImage" class="qr-code-image" src="" alt="" loading="lazy" width="220" height="220">
+            <button class="utility-button" id="downloadQRBtn"></button>
+        </section>
+    </div>
+
+    <div class="modal-overlay" id="videoModal" aria-hidden="true">
+        <section class="modal-content" role="dialog" aria-modal="true" aria-labelledby="videoTitle" aria-describedby="videoCaption">
+            <div class="modal-header">
+                <div>
+                    <p class="modal-eyebrow" id="videoEyebrow"></p>
+                    <h2 id="videoTitle"></h2>
+                </div>
+                <button class="icon-btn close-btn" data-close-modal="videoModal" aria-label="Close">✕</button>
+            </div>
+            <p id="videoCaption"></p>
+            <div id="videoContainer"></div>
+        </section>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

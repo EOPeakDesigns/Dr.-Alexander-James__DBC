@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Dr. Alexander James">
+  <defs>
+    <linearGradient id="aj-bg" x1="72" y1="440" x2="440" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f3d66"/>
+      <stop offset="42%" stop-color="#1e5a8a"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+    <linearGradient id="aj-gold" x1="300" y1="64" x2="448" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e8c882"/>
+      <stop offset="100%" stop-color="#b4862f"/>
+    </linearGradient>
+    <radialGradient id="aj-shine" cx="28%" cy="22%" r="68%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <symbol id="aj-monogram" viewBox="0 0 512 512">
+      <circle cx="256" cy="256" r="250" fill="url(#aj-bg)"/>
+      <circle cx="256" cy="256" r="250" fill="url(#aj-shine)"/>
+      <circle cx="256" cy="256" r="234" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="3"/>
+      <path d="M392 108Q340 72 288 92" fill="none" stroke="url(#aj-gold)" stroke-width="7" stroke-linecap="round" opacity="0.92"/>
+      <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M152 348L212 198" stroke-width="40"/>
+        <path d="M212 198L272 348" stroke-width="40"/>
+        <line x1="178" y1="292" x2="246" y2="292" stroke-width="34"/>
+        <path d="M318 198V298" stroke-width="40"/>
+        <path d="M318 298Q318 348 268 348Q228 348 228 318" stroke-width="40"/>
+      </g>
+      <line x1="168" y1="388" x2="344" y2="388" stroke="#ffffff" stroke-opacity="0.52" stroke-width="10" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+  <use href="#aj-monogram"/>
+</svg>

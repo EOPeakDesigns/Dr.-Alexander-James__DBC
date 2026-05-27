@@ -1,0 +1,14 @@
+{
+  "name": "dr-james-digital-card",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:brand": "node scripts/build-brand-assets.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "png-to-ico": "^2.1.8",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.33.5"
+  }
+}
