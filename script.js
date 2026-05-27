@@ -235,16 +235,33 @@ function contactItem(type, label, href, value, options = {}) {
     `;
 }
 
-function initTouchFocusCleanup() {
-    if (!isCoarsePointer()) return;
+function releaseTouchState(target) {
+    if (!target) return;
+    target.blur();
+}
 
-    document.addEventListener("pointerup", (event) => {
-        const target = event.target.closest(TOUCH_FOCUS_SELECTOR);
-        if (!target) return;
+function shouldReleaseTouchState(event) {
+    return event.pointerType === "touch"
+        || document.documentElement.classList.contains("touch-device")
+        || isCoarsePointer();
+}
+
+function initTouchFocusCleanup() {
+    if (isCoarsePointer()) {
+        document.documentElement.classList.add("touch-device");
+    }
+
+    window.addEventListener("touchstart", () => {
+        document.documentElement.classList.add("touch-device");
+    }, { passive: true, once: true });
+
+    // Run only after click handlers finish. Never on pointerup — that blocks click on Chrome mobile.
+    document.addEventListener("click", (event) => {
+        if (!shouldReleaseTouchState(event)) return;
         window.setTimeout(() => {
-            if (document.activeElement === target) target.blur();
+            releaseTouchState(event.target.closest(TOUCH_FOCUS_SELECTOR));
         }, 0);
-    }, { passive: true });
+    });
 }
 
 function bindEvents() {

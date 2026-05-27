@@ -272,12 +272,7 @@ body[data-theme="dark"] .business-card::after {
     aspect-ratio: 1;
     padding: 0;
     position: relative;
-    transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.utility-button.icon-only:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(15, 61, 102, 0.18);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, filter .2s ease;
 }
 
 .utility-icon {
@@ -347,6 +342,7 @@ body[data-theme="dark"] .business-card::after {
     -webkit-tap-highlight-color: transparent;
     tap-highlight-color: transparent;
     touch-action: manipulation;
+    transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease, filter .16s ease;
 }
 
 .copy-btn {
@@ -382,19 +378,9 @@ body[data-theme="dark"] .business-card::after {
     background: linear-gradient(180deg, #f9fbfe, #eaf0f7);
 }
 
-.icon-copy-btn:hover {
-    border-color: color-mix(in srgb, var(--primary), #ffffff 55%);
-    background: linear-gradient(180deg, #eff5fc, #e2ebf6);
-}
-
 .whatsapp-btn {
     color: #25d366;
     background: linear-gradient(180deg, #f0fdf8, #dcfcef);
-}
-
-.whatsapp-btn:hover {
-    border-color: color-mix(in srgb, #25d366, #ffffff 45%);
-    background: linear-gradient(180deg, #e4fbf2, #ccf7e6);
 }
 
 .utility-icon--whatsapp {
@@ -415,12 +401,7 @@ body[data-theme="dark"] .business-card::after {
 .icon-social {
     padding: 0;
     border-radius: 12px;
-    transition: transform .2s ease, box-shadow .2s ease, color .2s ease, border-color .2s ease;
-}
-
-.icon-social:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 18px rgba(11, 18, 32, 0.16);
+    transition: transform .2s ease, box-shadow .2s ease, color .2s ease, border-color .2s ease, background .2s ease;
 }
 
 .social-link--instagram { color: #c13584; }
@@ -492,11 +473,6 @@ body[data-theme="dark"] .icon-social {
     height: 16px;
 }
 
-.install-toast__close:hover {
-    background: rgba(15, 61, 102, 0.08);
-    color: var(--text);
-}
-
 .install-toast__content {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -555,12 +531,6 @@ body[data-theme="dark"] .icon-social {
     touch-action: manipulation;
 }
 
-.install-toast__cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 20px rgba(15, 61, 102, 0.3);
-    filter: brightness(1.04);
-}
-
 @media (prefers-reduced-motion: reduce) {
     .install-toast {
         transition: opacity 0.2s ease;
@@ -568,10 +538,6 @@ body[data-theme="dark"] .icon-social {
     }
 
     .install-toast.is-visible {
-        transform: none;
-    }
-
-    .install-toast__cta:hover {
         transform: none;
     }
 }
@@ -743,12 +709,6 @@ body[data-theme="dark"] .icon-social {
     z-index: 1;
 }
 
-#downloadQRBtn:hover {
-    transform: translateY(-1px);
-    border-color: color-mix(in srgb, var(--primary), #ffffff 45%);
-    box-shadow: 0 12px 22px rgba(11, 18, 32, 0.16);
-}
-
 @media (max-width: 360px) {
     #qrModal .modal-content {
         border-radius: 18px;
@@ -822,14 +782,6 @@ body[data-theme="dark"] .whatsapp-btn {
     color: #25d366;
 }
 
-body[data-theme="dark"] .icon-copy-btn:hover,
-body[data-theme="dark"] .whatsapp-btn:hover,
-body[data-theme="dark"] .utility-button.icon-only:hover,
-body[data-theme="dark"] .icon-social:hover {
-    border-color: #6992be;
-    box-shadow: 0 10px 20px rgba(2, 6, 23, 0.5);
-}
-
 body[data-theme="dark"] .modal-content,
 body[data-theme="dark"] .install-toast {
     background: linear-gradient(165deg, rgba(22, 38, 61, 0.98), rgba(19, 34, 57, 0.96));
@@ -837,11 +789,6 @@ body[data-theme="dark"] .install-toast {
     box-shadow:
         0 20px 44px rgba(2, 6, 23, 0.55),
         0 2px 10px rgba(2, 6, 23, 0.35);
-}
-
-body[data-theme="dark"] .install-toast__close:hover {
-    background: rgba(138, 188, 232, 0.12);
-    color: #e6edf7;
 }
 
 body[data-theme="dark"] .install-toast__icon {
@@ -918,6 +865,162 @@ body[data-theme="dark"] .toast {
 
     .container {
         width: 100%;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .utility-button.icon-only:hover,
+    .icon-copy-btn:hover,
+    .whatsapp-btn:hover,
+    .icon-social:hover,
+    .contact-link:hover,
+    .copy-btn:hover,
+    .social-link:hover,
+    .icon-btn:hover,
+    .close-btn:hover,
+    .avatar-button:hover,
+    .install-toast__close:hover,
+    .install-toast__cta:hover,
+    #downloadQRBtn:hover {
+        transform: none;
+        filter: none;
+    }
+
+    .utility-button.icon-only:hover,
+    .icon-btn:hover,
+    .close-btn:hover {
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .icon-copy-btn:hover {
+        border-color: var(--border);
+        background: linear-gradient(180deg, #f9fbfe, #eaf0f7);
+    }
+
+    .whatsapp-btn:hover {
+        border-color: var(--border);
+        background: linear-gradient(180deg, #f0fdf8, #dcfcef);
+    }
+
+    .icon-social:hover {
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .install-toast__close:hover {
+        background: transparent;
+        color: var(--muted);
+    }
+
+    .install-toast__cta:hover {
+        box-shadow: 0 8px 16px rgba(15, 61, 102, 0.24);
+    }
+
+    #downloadQRBtn:hover {
+        border-color: color-mix(in srgb, var(--border), var(--primary) 18%);
+        box-shadow: 0 8px 18px rgba(11, 18, 32, 0.12);
+    }
+
+    body[data-theme="dark"] .utility-button.icon-only:hover,
+    body[data-theme="dark"] .icon-btn:hover,
+    body[data-theme="dark"] .close-btn:hover,
+    body[data-theme="dark"] .contact-link:hover,
+    body[data-theme="dark"] .copy-btn:hover,
+    body[data-theme="dark"] .social-link:hover {
+        box-shadow: 0 6px 14px rgba(2, 6, 23, 0.35);
+    }
+
+    body[data-theme="dark"] .icon-copy-btn:hover {
+        border-color: #4b6484;
+        background: linear-gradient(180deg, #223654, #1b2d46);
+    }
+
+    body[data-theme="dark"] .whatsapp-btn:hover {
+        border-color: #2f665c;
+        background: linear-gradient(180deg, #17352f, #123028);
+    }
+
+    body[data-theme="dark"] .icon-social:hover {
+        border-color: #31445f;
+        box-shadow: 0 6px 14px rgba(2, 6, 23, 0.35);
+    }
+
+    body[data-theme="dark"] .install-toast__close:hover {
+        background: transparent;
+        color: var(--muted);
+    }
+
+    body[data-theme="dark"] #downloadQRBtn:hover {
+        border-color: #4f6d91;
+        box-shadow: 0 10px 20px rgba(2, 6, 23, 0.42);
+    }
+
+    .utility-button.icon-only:active,
+    .icon-copy-btn:active,
+    .whatsapp-btn:active,
+    .icon-social:active,
+    .contact-link:active,
+    .copy-btn:active,
+    .social-link:active,
+    .icon-btn:active,
+    .close-btn:active,
+    .avatar-button:active,
+    .install-toast__close:active,
+    .install-toast__cta:active,
+    #downloadQRBtn:active {
+        transform: scale(0.97);
+        transition-duration: 0.08s;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .utility-button.icon-only:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(15, 61, 102, 0.18);
+    }
+
+    .icon-copy-btn:hover {
+        border-color: color-mix(in srgb, var(--primary), #ffffff 55%);
+        background: linear-gradient(180deg, #eff5fc, #e2ebf6);
+    }
+
+    .whatsapp-btn:hover {
+        border-color: color-mix(in srgb, #25d366, #ffffff 45%);
+        background: linear-gradient(180deg, #e4fbf2, #ccf7e6);
+    }
+
+    .icon-social:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 18px rgba(11, 18, 32, 0.16);
+    }
+
+    .install-toast__close:hover {
+        background: rgba(15, 61, 102, 0.08);
+        color: var(--text);
+    }
+
+    .install-toast__cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 20px rgba(15, 61, 102, 0.3);
+        filter: brightness(1.04);
+    }
+
+    #downloadQRBtn:hover {
+        transform: translateY(-1px);
+        border-color: color-mix(in srgb, var(--primary), #ffffff 45%);
+        box-shadow: 0 12px 22px rgba(11, 18, 32, 0.16);
+    }
+
+    body[data-theme="dark"] .icon-copy-btn:hover,
+    body[data-theme="dark"] .whatsapp-btn:hover,
+    body[data-theme="dark"] .utility-button.icon-only:hover,
+    body[data-theme="dark"] .icon-social:hover {
+        border-color: #6992be;
+        box-shadow: 0 10px 20px rgba(2, 6, 23, 0.5);
+    }
+
+    body[data-theme="dark"] .install-toast__close:hover {
+        background: rgba(138, 188, 232, 0.12);
+        color: #e6edf7;
     }
 }
 
