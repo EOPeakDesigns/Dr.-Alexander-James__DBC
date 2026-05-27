@@ -190,6 +190,9 @@ body[data-theme="dark"] .business-card::after {
     border-radius: 12px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .profile-section {
@@ -205,6 +208,9 @@ body[data-theme="dark"] .business-card::after {
     padding: 0;
     background: transparent;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .profile-image {
@@ -338,6 +344,9 @@ body[data-theme="dark"] .business-card::after {
     align-items: center;
     justify-content: center;
     padding: 8px 12px;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .copy-btn {
@@ -473,6 +482,9 @@ body[data-theme="dark"] .icon-social {
     place-items: center;
     cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .install-toast__close svg {
@@ -483,11 +495,6 @@ body[data-theme="dark"] .icon-social {
 .install-toast__close:hover {
     background: rgba(15, 61, 102, 0.08);
     color: var(--text);
-}
-
-.install-toast__close:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
 }
 
 .install-toast__content {
@@ -543,17 +550,15 @@ body[data-theme="dark"] .icon-social {
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(15, 61, 102, 0.24);
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .install-toast__cta:hover {
     transform: translateY(-1px);
     box-shadow: 0 10px 20px rgba(15, 61, 102, 0.3);
     filter: brightness(1.04);
-}
-
-.install-toast__cta:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -683,6 +688,9 @@ body[data-theme="dark"] .icon-social {
     justify-content: center;
     background: linear-gradient(180deg, #ffffff, #edf2f8);
     border: 1px solid color-mix(in srgb, var(--border), var(--primary) 15%);
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 #qrModal .modal-content {
@@ -913,9 +921,38 @@ body[data-theme="dark"] .toast {
     }
 }
 
-:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 2px;
+@media (pointer: coarse) {
+    button:focus,
+    a:focus,
+    .utility-button:focus,
+    .contact-link:focus,
+    .copy-btn:focus,
+    .social-link:focus,
+    .whatsapp-btn:focus,
+    .icon-btn:focus,
+    .avatar-button:focus,
+    .install-toast__close:focus,
+    .install-toast__cta:focus,
+    .close-btn:focus {
+        outline: none;
+    }
+}
+
+@media (pointer: fine) {
+    :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+    }
+
+    .install-toast__close:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    .install-toast__cta:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

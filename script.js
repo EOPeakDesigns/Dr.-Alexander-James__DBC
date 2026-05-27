@@ -3,6 +3,8 @@ const INSTALL_DISMISSED_KEY = "install_dismissed_v1";
 const THEME_KEY = "card_theme_v1";
 const LANG_KEY = "card_lang_v1";
 const DEFAULT_AVATAR = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face";
+const TOUCH_FOCUS_SELECTOR = "button, a[href], .utility-button, .contact-link, .copy-btn, .social-link, .whatsapp-btn, .icon-btn, .avatar-button, .install-toast__cta, .install-toast__close, .close-btn";
+const isCoarsePointer = () => window.matchMedia("(pointer: coarse)").matches;
 
 let state = {
     card: null,
@@ -63,6 +65,7 @@ async function init() {
     initInstallFlow();
     hydrateUI();
     bindEvents();
+    initTouchFocusCleanup();
     applyTheme();
     watchSystemThemeChanges();
     registerServiceWorker();
@@ -232,6 +235,18 @@ function contactItem(type, label, href, value, options = {}) {
     `;
 }
 
+function initTouchFocusCleanup() {
+    if (!isCoarsePointer()) return;
+
+    document.addEventListener("pointerup", (event) => {
+        const target = event.target.closest(TOUCH_FOCUS_SELECTOR);
+        if (!target) return;
+        window.setTimeout(() => {
+            if (document.activeElement === target) target.blur();
+        }, 0);
+    }, { passive: true });
+}
+
 function bindEvents() {
     elements.openQRBtn.addEventListener("click", (e) => openModal(elements.qrModal, e.currentTarget));
     elements.openVideoBtn.addEventListener("click", (e) => openVideoModal(e.currentTarget));
@@ -279,7 +294,7 @@ function closeModal(modalId, byEscape = false) {
     document.body.style.overflow = "";
     if (modalId === "videoModal") elements.videoContainer.innerHTML = "";
     if (state.activeModalTrigger) {
-        if (byEscape) {
+        if (byEscape || isCoarsePointer()) {
             state.activeModalTrigger.blur();
         } else {
             state.activeModalTrigger.focus();
@@ -293,8 +308,10 @@ function openModal(modal, trigger) {
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    const firstFocusable = modal.querySelector("button, a, input, [tabindex]:not([tabindex='-1'])");
-    if (firstFocusable) firstFocusable.focus();
+    if (!isCoarsePointer()) {
+        const firstFocusable = modal.querySelector("button, a, input, [tabindex]:not([tabindex='-1'])");
+        if (firstFocusable) firstFocusable.focus();
+    }
 }
 
 function trapFocus(modal, event) {
