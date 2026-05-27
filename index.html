@@ -58,11 +58,18 @@
         </article>
     </main>
 
-    <aside class="install-banner hidden" id="installBanner">
-        <p id="installMessage"></p>
-        <div class="install-actions">
-            <button id="installNowBtn"></button>
-            <button id="dismissInstallBtn"></button>
+    <aside class="install-toast hidden" id="installBanner" role="region" aria-labelledby="installMessage" aria-live="polite">
+        <button class="install-toast__close" id="dismissInstallBtn" type="button" aria-label="Dismiss">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="install-toast__content">
+            <div class="install-toast__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="currentColor" stroke-width="1.75"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" stroke="currentColor" stroke-width="1.75"/></svg>
+            </div>
+            <div class="install-toast__copy">
+                <p class="install-toast__message" id="installMessage"></p>
+                <button class="install-toast__cta" id="installNowBtn" type="button"></button>
+            </div>
         </div>
     </aside>
 

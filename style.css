@@ -389,20 +389,159 @@ body[data-theme="dark"] .icon-social {
     border-color: #31445f;
 }
 
-.install-banner {
+.install-toast {
     position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    background: var(--card);
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    left: auto;
+    width: min(340px, calc(100vw - 28px - env(safe-area-inset-right)));
+    z-index: 95;
     border: 1px solid var(--border);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    padding: 12px;
-    z-index: 90;
+    border-radius: 18px;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 252, 0.96));
+    box-shadow:
+        0 18px 40px rgba(11, 18, 32, 0.18),
+        0 2px 8px rgba(11, 18, 32, 0.08);
+    backdrop-filter: blur(14px);
+    padding: 14px 14px 14px 16px;
+    transform: translate3d(0, 18px, 0) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.32s ease,
+        box-shadow 0.32s ease;
 }
 
-.install-actions { display: flex; gap: 8px; }
+.install-toast.is-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.install-toast.hidden {
+    display: none !important;
+}
+
+.install-toast__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.install-toast__close svg {
+    width: 16px;
+    height: 16px;
+}
+
+.install-toast__close:hover {
+    background: rgba(15, 61, 102, 0.08);
+    color: var(--text);
+}
+
+.install-toast__close:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.install-toast__content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: start;
+    padding-right: 28px;
+}
+
+.install-toast__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: linear-gradient(145deg, #0f3d66, #0f766e);
+    box-shadow: 0 8px 18px rgba(15, 61, 102, 0.28);
+    flex-shrink: 0;
+}
+
+.install-toast__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.install-toast__copy {
+    display: grid;
+    gap: 10px;
+    min-width: 0;
+}
+
+.install-toast__message {
+    margin: 2px 0 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+}
+
+.install-toast__cta {
+    justify-self: start;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(145deg, #0f3d66, #145a7a);
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(15, 61, 102, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.install-toast__cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(15, 61, 102, 0.3);
+    filter: brightness(1.04);
+}
+
+.install-toast__cta:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .install-toast {
+        transition: opacity 0.2s ease;
+        transform: none;
+    }
+
+    .install-toast.is-visible {
+        transform: none;
+    }
+
+    .install-toast__cta:hover {
+        transform: none;
+    }
+}
+
+@media (max-width: 380px) {
+    .install-toast {
+        width: min(320px, calc(100vw - 20px - env(safe-area-inset-right)));
+        right: max(10px, env(safe-area-inset-right));
+        bottom: max(10px, env(safe-area-inset-bottom));
+    }
+}
 
 .hidden { display: none !important; }
 
@@ -648,9 +787,27 @@ body[data-theme="dark"] .icon-social:hover {
 }
 
 body[data-theme="dark"] .modal-content,
-body[data-theme="dark"] .install-banner {
-    background: linear-gradient(180deg, #16263d, #132239);
+body[data-theme="dark"] .install-toast {
+    background: linear-gradient(165deg, rgba(22, 38, 61, 0.98), rgba(19, 34, 57, 0.96));
     border-color: #3a5373;
+    box-shadow:
+        0 20px 44px rgba(2, 6, 23, 0.55),
+        0 2px 10px rgba(2, 6, 23, 0.35);
+}
+
+body[data-theme="dark"] .install-toast__close:hover {
+    background: rgba(138, 188, 232, 0.12);
+    color: #e6edf7;
+}
+
+body[data-theme="dark"] .install-toast__icon {
+    background: linear-gradient(145deg, #1a4d78, #17867a);
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.45);
+}
+
+body[data-theme="dark"] .install-toast__cta {
+    background: linear-gradient(145deg, #1a527f, #1f6b8f);
+    box-shadow: 0 8px 16px rgba(2, 6, 23, 0.4);
 }
 
 body[data-theme="dark"] .mode-pill {

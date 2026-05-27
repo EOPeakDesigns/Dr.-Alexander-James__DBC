@@ -119,7 +119,7 @@ function hydrateUI() {
     elements.downloadQRBtn.innerHTML = `${iconMarkup("save")}<span>${t.downloadQr}</span>`;
     elements.installMessage.textContent = t.installMessage;
     elements.installNowBtn.textContent = t.installNow;
-    elements.dismissInstallBtn.textContent = t.dismiss;
+    elements.dismissInstallBtn.setAttribute("aria-label", t.dismiss);
     elements.langToggle.setAttribute("title", t.languageToggle);
     elements.langToggle.setAttribute("aria-label", t.languageToggle);
     elements.saveContactBtn.setAttribute("title", t.saveContact);
@@ -455,7 +455,21 @@ function isInstallDismissed() {
 }
 
 function hideInstallBanner() {
-    if (elements.installBanner) elements.installBanner.classList.add("hidden");
+    if (!elements.installBanner) return;
+    elements.installBanner.classList.remove("is-visible");
+    window.setTimeout(() => {
+        if (!elements.installBanner.classList.contains("is-visible")) {
+            elements.installBanner.classList.add("hidden");
+        }
+    }, 320);
+}
+
+function showInstallBanner() {
+    if (!elements.installBanner) return;
+    elements.installBanner.classList.remove("hidden");
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => elements.installBanner.classList.add("is-visible"));
+    });
 }
 
 function initInstallFlow() {
@@ -467,7 +481,7 @@ function initInstallFlow() {
         if (isStandaloneMode() || isInstallDismissed()) return;
         event.preventDefault();
         state.deferredInstallPrompt = event;
-        elements.installBanner.classList.remove("hidden");
+        showInstallBanner();
     });
 
     window.addEventListener("appinstalled", () => {
@@ -481,7 +495,7 @@ async function handleInstall() {
     state.deferredInstallPrompt.prompt();
     await state.deferredInstallPrompt.userChoice;
     state.deferredInstallPrompt = null;
-    elements.installBanner.classList.add("hidden");
+    hideInstallBanner();
 }
 
 function dismissInstall() {
