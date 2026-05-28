@@ -1,9 +1,10 @@
-const CACHE_NAME = "digital-card-v11";
+const CACHE_NAME = "dbc-gm-v16";
 const SHELL_ASSETS = [
     "./",
     "./index.html",
     "./style.css",
     "./script.js",
+    "./script.js?v=2",
     "./data/card.json",
     "./manifest.webmanifest",
     "./assets/favicon.svg",

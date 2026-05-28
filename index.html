@@ -91,7 +91,7 @@
     </div>
 
     <div class="modal-overlay" id="videoModal" aria-hidden="true">
-        <section class="modal-content" role="dialog" aria-modal="true" aria-labelledby="videoTitle" aria-describedby="videoCaption">
+        <section class="modal-content video-modal-content" role="dialog" aria-modal="true" aria-labelledby="videoTitle" aria-describedby="videoCaption">
             <div class="modal-header">
                 <div>
                     <p class="modal-eyebrow" id="videoEyebrow"></p>
@@ -100,10 +100,22 @@
                 <button class="icon-btn close-btn" data-close-modal="videoModal" aria-label="Close">✕</button>
             </div>
             <p id="videoCaption"></p>
-            <div id="videoContainer"></div>
+            <div class="video-container" id="videoContainer">
+                <div class="video-embed">
+                    <iframe
+                        id="profileVideoFrame"
+                        data-src="https://www.youtube.com/embed/2Ri8f-wqonE?playsinline=1&amp;rel=0&amp;modestbranding=1"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
         </section>
     </div>
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="script.js?v=2"></script>
 </body>
 </html>

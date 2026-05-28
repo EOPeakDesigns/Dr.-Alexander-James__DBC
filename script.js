@@ -33,6 +33,7 @@ const elements = {
     videoModal: document.getElementById("videoModal"),
     downloadQRBtn: document.getElementById("downloadQRBtn"),
     videoContainer: document.getElementById("videoContainer"),
+    profileVideoFrame: document.getElementById("profileVideoFrame"),
     toast: document.getElementById("appToast"),
     themeToggle: document.getElementById("themeToggle"),
     langToggle: document.getElementById("langToggle"),
@@ -133,6 +134,9 @@ function hydrateUI() {
     elements.videoEyebrow.textContent = t.videoEyebrow;
     elements.videoTitle.textContent = t.videoTitle;
     elements.videoCaption.textContent = t.videoCaption;
+    if (elements.profileVideoFrame) {
+        elements.profileVideoFrame.setAttribute("title", t.videoTitle);
+    }
     renderActionIcons();
     elements.downloadQRBtn.innerHTML = `${iconMarkup("save")}<span>${t.downloadQr}</span>`;
     elements.installMessage.textContent = t.installMessage;
@@ -295,12 +299,35 @@ function handleEscAndTrap(event) {
     trapFocus(openModalEl, event);
 }
 
+function loadEmbed() {
+    const frame = elements.profileVideoFrame;
+    if (!frame) return;
+    const src = frame.dataset.src;
+    if (src && frame.getAttribute("src") !== src) {
+        frame.setAttribute("src", src);
+    }
+}
+
+function unloadEmbed() {
+    const frame = elements.profileVideoFrame;
+    if (!frame) return;
+    frame.removeAttribute("src");
+}
+
+function unloadLocalVideo() {
+    const video = elements.videoModal?.querySelector("video");
+    if (!video) return;
+    video.pause();
+    video.currentTime = 0;
+}
+
 function openVideoModal(trigger) {
-    const v = state.card.featureVideo;
-    elements.videoContainer.innerHTML = v.type === "embed"
-        ? `<iframe class="video-frame" src="${v.src}" title="${labels().videoTitle}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
-        : `<video class="video-frame" controls preload="none"><source src="${v.src}" type="video/mp4"></video>`;
     openModal(elements.videoModal, trigger);
+    loadEmbed();
+    const frame = elements.profileVideoFrame;
+    if (frame) {
+        frame.setAttribute("title", labels().videoTitle);
+    }
 }
 
 function closeModal(modalId, byEscape = false) {
@@ -309,7 +336,10 @@ function closeModal(modalId, byEscape = false) {
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    if (modalId === "videoModal") elements.videoContainer.innerHTML = "";
+    if (modalId === "videoModal") {
+        unloadEmbed();
+        unloadLocalVideo();
+    }
     if (state.activeModalTrigger) {
         if (byEscape || isCoarsePointer()) {
             state.activeModalTrigger.blur();
